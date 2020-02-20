@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:gravity="center"
     android:background="@color/colorPrimary"
-    tools:context=".MainActivity">
+    tools:context=".Daftar">
 
     <LinearLayout
         android:layout_width="250dp"
@@ -15,10 +15,18 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login"
+                android:text="Daftar"
             android:textSize="40dp"
             android:layout_marginBottom="20dp"
             android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/txtNama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama"
+            android:inputType="textEmailAddress"
+            android:textSize="14dp"/>
 
         <EditText
             android:id="@+id/txtEmail"
@@ -34,35 +42,32 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:inputType="textPassword" />
-            android:textSize="14dp"/>
+        android:textSize="14dp"/>
 
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_margin="5dp"
-               android:gravity="center"
-               android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:text="belum memiliki akun?"
-                   android:textSize="14dp"
-                   android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="belum memiliki akun?"
+                android:textSize="14dp"
+                android:textStyle="bold"/>
 
-               <TextView
-                   android:id="@+id/tvDaftar"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:text="Daftar"
-                   android:textSize="14dp"
-                   android:textColor="@color/colorBlue"
-                   android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tvLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Kembali Login"
+                android:textSize="14dp"
+                android:textColor="@color/colorBlue"
+                android:textStyle="bold"/>
 
-           </LinearLayout>
-
-
-
+        </LinearLayout>
 
 
         <Button
@@ -71,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/btn_login"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:text="Login"
             android:textAllCaps="false"
             android:layout_gravity="center"
@@ -79,8 +84,5 @@
             />
 
     </LinearLayout>
-
-
-
 
 </RelativeLayout>
