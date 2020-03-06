@@ -4,19 +4,32 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Dashboard extends AppCompatActivity {
+
+    SharedPreferences pref;
+
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
         bottomNavigationView = findViewById(R.id.btnNV);
+
+        pref = getApplicationContext().getSharedPreferences("Mypref",MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+
+        editor.putString("KEY1" , "Test Shared Preferances");
+        editor.commit();
+
+        Log.d("Test Shared Preferances",pref.getString("KEY1",null));
+
 
         if (savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.framLay, new homeFragment()).commit();
