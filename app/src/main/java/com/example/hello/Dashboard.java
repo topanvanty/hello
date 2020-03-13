@@ -8,12 +8,18 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.HashMap;
+
 public class Dashboard extends AppCompatActivity {
 
-    SharedPreferences pref;
+
+    Button btnLog;
+    EditText etEmail;
 
     BottomNavigationView bottomNavigationView;
     @Override
@@ -22,13 +28,6 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         bottomNavigationView = findViewById(R.id.btnNV);
 
-        pref = getApplicationContext().getSharedPreferences("Mypref",MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-
-        editor.putString("KEY1" , "Test Shared Preferances");
-        editor.commit();
-
-        Log.d("Test Shared Preferances",pref.getString("KEY1",null));
 
 
         if (savedInstanceState == null){
