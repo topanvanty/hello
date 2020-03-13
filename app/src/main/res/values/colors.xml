@@ -5,4 +5,9 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorBlue">#2196F3</color>
 
+    <color name="white">#FFFFFF</color>
+    <color name="transparant">#00000000</color>
+    <color name="grandStar">#1970AA</color>
+    <color name="grandStop">#23B4D8</color>
+
 </resources>
