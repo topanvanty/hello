@@ -19,6 +19,8 @@
     app:menu="@menu/menu"
     android:background="#fff"
     />
+
+
     <Button
         android:id="@+id/btnLog"
         android:layout_width="match_parent"

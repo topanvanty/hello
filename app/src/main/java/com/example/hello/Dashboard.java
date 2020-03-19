@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -18,9 +20,8 @@ import java.util.HashMap;
 
 public class Dashboard extends AppCompatActivity {
 
-
+    ExampleBroadcastReceiver exampleBroadcastReceiver = new ExampleBroadcastReceiver();
     Button btnLog;
-    EditText etEmail;
 
     BottomNavigationView bottomNavigationView;
     @Override
@@ -40,6 +41,7 @@ public class Dashboard extends AppCompatActivity {
                 finish();
             }
         });
+
 
 
 
@@ -70,4 +72,18 @@ public class Dashboard extends AppCompatActivity {
 
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(exampleBroadcastReceiver, filter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(exampleBroadcastReceiver);
+    }
+
 }
