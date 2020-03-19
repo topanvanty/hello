@@ -19,5 +19,15 @@
     app:menu="@menu/menu"
     android:background="#fff"
     />
-
+    <Button
+        android:id="@+id/btnLog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bt_bg"
+        android:textSize="14dp"
+        android:textColor="@color/white"
+        android:text="Logout"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:stateListAnimator="@null" />
 </RelativeLayout>

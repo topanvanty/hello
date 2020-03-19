@@ -3,6 +3,7 @@ package com.example.hello;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences pref ;
     Database db;
     RelativeLayout rellay1, rellay2;
     Handler handler = new Handler();
@@ -32,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences preferences = getSharedPreferences("login", MODE_PRIVATE);
+        String cek = preferences.getString("ingat","");
+        if (cek.equals("true")){
+            Intent intent = new Intent(MainActivity.this, Dashboard.class);
+            startActivity(intent);
+        }
 
 
         db = new Database(this);
@@ -40,27 +48,31 @@ public class MainActivity extends AppCompatActivity {
         rellay2 = (RelativeLayout)findViewById(R.id.rellay2);
         handler.postDelayed(runnable, 500);
 
-        tvEmail = findViewById(R.id.tvEmail);
-        tvPass = findViewById(R.id.tvPass);
-        btnLogin = findViewById(R.id.btnLogin);
-        btnDaftar = findViewById(R.id.btnDaftar);
+        tvEmail = (EditText)findViewById(R.id.tvEmail);
+        tvPass = (EditText)findViewById(R.id.tvPass);
+        btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnDaftar = (Button)findViewById(R.id.btnDaftar);
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String user = tvEmail.getText().toString().trim();
-                String pwd = tvPass.getText().toString().trim();
+
+                SharedPreferences preferen = getSharedPreferences("login", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferen.edit();
+                editor.putString("ingat", "true");
+                editor.apply();
+
+                String user = tvEmail.getText().toString();
+                String pwd = tvPass.getText().toString();
                 Boolean res = db.checkUser(user, pwd);
-                if(res == true)
-                {
-                    Intent HomePage = new Intent(MainActivity.this,Dashboard.class);
-                    startActivity(HomePage);
+                if (res==true) {
+                    Toast.makeText(getApplicationContext(), "SUKSES LOGIN", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(MainActivity.this, Dashboard.class);
+                    startActivity(i);
                 }
                 else
-                {
-                    Toast.makeText(MainActivity.this,"Login Error",Toast.LENGTH_SHORT).show();
-                }
+                    Toast.makeText(getApplicationContext(),"Login Gagal",Toast.LENGTH_LONG).show();
             }
         });
 

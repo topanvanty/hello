@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -27,6 +28,18 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         bottomNavigationView = findViewById(R.id.btnNV);
+
+        btnLog = findViewById(R.id.btnLog);
+        btnLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences preferen = getSharedPreferences("login", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferen.edit();
+                editor.putString("ingat", "false");
+                editor.apply();
+                finish();
+            }
+        });
 
 
 
