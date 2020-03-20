@@ -10,7 +10,19 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/framLay" />
+        android:id="@+id/framLay" >
+
+        <Button
+            android:id="@+id/btnLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bt_bg"
+            android:stateListAnimator="@null"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+    </FrameLayout>
 <com.google.android.material.bottomnavigation.BottomNavigationView
     android:id="@+id/btnNV"
     android:layout_width="match_parent"
@@ -20,16 +32,28 @@
     android:background="#fff"
     />
 
-
-    <Button
-        android:id="@+id/btnLog"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bt_bg"
-        android:textSize="14dp"
-        android:textColor="@color/white"
-        android:text="Logout"
-        android:textAllCaps="false"
-        android:layout_gravity="center"
-        android:stateListAnimator="@null" />
+        android:layout_centerInParent="true"
+        >
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnStar"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Star Job"
+            android:onClick="scheduleJob"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Cancel Job"
+            android:onClick="cancelJob"/>
+
+    </LinearLayout>
+
+
+
+
 </RelativeLayout>

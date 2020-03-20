@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -20,8 +23,13 @@ import java.util.HashMap;
 
 public class Dashboard extends AppCompatActivity {
 
+    private static final String TAG = "Dashboard";
     ExampleBroadcastReceiver exampleBroadcastReceiver = new ExampleBroadcastReceiver();
-    Button btnLog;
+   private Button btnLog,btnStar,btnCancel;
+
+
+
+
 
     BottomNavigationView bottomNavigationView;
     @Override
@@ -31,6 +39,10 @@ public class Dashboard extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.btnNV);
 
         btnLog = findViewById(R.id.btnLog);
+        btnStar = findViewById(R.id.btnStar);
+        btnCancel = findViewById(R.id.btnCancel);
+
+
         btnLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,4 +98,26 @@ public class Dashboard extends AppCompatActivity {
         unregisterReceiver(exampleBroadcastReceiver);
     }
 
+    public void scheduleJob(View view){
+
+        ComponentName componentName = new ComponentName(getApplication(),MyJobService.class);
+        JobInfo info = new JobInfo.Builder(123, componentName)
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
+                .setPersisted(true)
+                .setPeriodic(15 * 60 * 1000)
+                .build();
+
+        JobScheduler scheduler =(JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+        int ResultCode = scheduler.schedule(info);
+        if (ResultCode == JobScheduler.RESULT_SUCCESS){
+            Log.i(TAG, "scheduleJob: Job Scheduled");
+        } else {
+            Log.i(TAG, "scheduleJob: Job Scheduling failed");
+        }
+    }
+        public void cancelJob(View view){
+            JobScheduler scheduler =(JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+            scheduler.cancel(123);
+            Log.i(TAG, "cancelJob");
+        }
 }
