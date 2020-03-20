@@ -43,7 +43,7 @@ public class MyJobService extends JobService {
                     mHandler.post(new Runnable() {
                         @Override
                         public void run() {
-                            Log.i(TAG, "handler run:"+finalI);
+                            Toast.makeText(getApplicationContext(), "berhasil"+String.valueOf(finalI),Toast.LENGTH_SHORT).show();
 
                         }
                     });
