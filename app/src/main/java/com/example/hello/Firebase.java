@@ -2,6 +2,7 @@ package com.example.hello;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,5 +47,15 @@ public class Firebase {
 
             }
         });
+     }
+     public void tambah(mahasiswa mhs, final DataStatus dataStatus){
+        String key  = mReferenceMhs.push().getKey();
+        mReferenceMhs.child(key).setValue(mhs).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                dataStatus.DataIsInsert();
+            }
+        });
+
      }
 }
