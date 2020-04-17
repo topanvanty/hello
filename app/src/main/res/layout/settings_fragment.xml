@@ -38,11 +38,23 @@
                 android:textSize="25dp"/>
 
 
+
+
         </LinearLayout>
-
-
-
-
+        <Button
+            android:id="@+id/btnKeluar"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bt_bg"
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:stateListAnimator="@null">
+            s
+        </Button>
     </LinearLayout>
 
 </RelativeLayout>

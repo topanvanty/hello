@@ -38,21 +38,6 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         bottomNavigationView = findViewById(R.id.btnNV);
 
-        btnLog = findViewById(R.id.btnLog);
-        btnStar = findViewById(R.id.btnStar);
-        btnCancel = findViewById(R.id.btnCancel);
-
-
-        btnLog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences preferen = getSharedPreferences("login", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferen.edit();
-                editor.putString("ingat", "false");
-                editor.apply();
-                finish();
-            }
-        });
 
 
 
@@ -72,6 +57,9 @@ public class Dashboard extends AppCompatActivity {
                         break;
                     case R.id.fav:
                         fragment = new favoriteFragment();
+                        break;
+                    case R.id.Data:
+                        fragment = new dataFragment();
                         break;
                     case R.id.set:
                         fragment = new settingsFragment();
