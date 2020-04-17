@@ -26,7 +26,7 @@ public class Firebase {
 
     public Firebase() {
        mDatabase = FirebaseDatabase.getInstance();
-       mReferenceMhs = mDatabase.getReference("Mahasiswa");
+       mReferenceMhs = mDatabase.getReference("mahasiswa");
     }
      public void readMhs(final DataStatus dataStatus){
         mReferenceMhs.addValueEventListener(new ValueEventListener() {
@@ -56,6 +56,21 @@ public class Firebase {
                 dataStatus.DataIsInsert();
             }
         });
-
      }
+    public void updateData(String key, mahasiswa mhs , final DataStatus dataStatus){
+        mReferenceMhs.child(key).setValue(mhs).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                dataStatus.DataIsUpdate();
+            }
+        });
+    }
+    public void deleteData(String key,final DataStatus dataStatus){
+        mReferenceMhs.child(key).setValue(null).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                dataStatus.DataIsDelete();
+            }
+        });
+    }
 }

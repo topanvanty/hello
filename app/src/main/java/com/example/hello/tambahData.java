@@ -21,7 +21,7 @@ public class tambahData extends AppCompatActivity {
             nameET= (EditText) findViewById(R.id.nameET);
             nimET= (EditText) findViewById(R.id.nimET);
             prodiET= (EditText) findViewById(R.id.prodiET);
-            addBtn = (Button) findViewById(R.id.addBtn);
+            addBtn = (Button) findViewById(R.id.updateBtn);
             backBtn = (Button) findViewById(R.id.backBtn);
             addBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
