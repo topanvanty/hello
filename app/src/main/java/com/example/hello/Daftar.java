@@ -22,7 +22,6 @@ public class Daftar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar);
-
         db = new Database(this);
         txtEmail= (EditText)findViewById(R.id.txtPass);
         txtPass = (EditText)findViewById(R.id.txtPass);
