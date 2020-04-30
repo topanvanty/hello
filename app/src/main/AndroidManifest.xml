@@ -18,8 +18,12 @@
         <activity android:name=".dataRecylerview" />
         <activity android:name=".tambahData" />
         <activity android:name=".Daftar" />
-        <activity android:name=".Dashboard" />
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name=".Dashboard" />
         <activity android:name=".MainActivity">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

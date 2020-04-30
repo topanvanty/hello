@@ -9,6 +9,7 @@ import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -107,5 +109,15 @@ public class Dashboard extends AppCompatActivity {
             JobScheduler scheduler =(JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
             scheduler.cancel(123);
             Log.i(TAG, "cancelJob");
+        }
+
+        public void onConfigurationChanged(Configuration setConfiguration){
+            super.onConfigurationChanged(setConfiguration);
+            if(setConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT){
+                Toast.makeText(getApplicationContext(), "Mode Potrait", Toast.LENGTH_SHORT).show();
+            }
+            else if(setConfiguration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+                Toast.makeText(getApplicationContext(), "Mode Lanscape", Toast.LENGTH_SHORT).show();
+            }
         }
 }
