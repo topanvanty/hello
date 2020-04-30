@@ -35,10 +35,13 @@ public class Camera extends AppCompatActivity {
     Button btnCam,btnSave;
     OutputStream outputStream;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+
+        ActivityCompat.requestPermissions(Camera.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
 
         imgView = findViewById(R.id.image_view);
         btnCam = findViewById(R.id.btnCamera);
