@@ -13,5 +13,11 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:text="Take a Picture"/>
+    <Button
+        android:id="@+id/btnMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="GMAP"/>
 
 </LinearLayout>
